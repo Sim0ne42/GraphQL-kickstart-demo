@@ -1,6 +1,7 @@
 package com.graphql.kickstart.repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -10,10 +11,10 @@ import com.graphql.kickstart.domain.Book;
 public class BookRepository {
 
     private final List<Book> books = List.of(
-            new Book(1, "Guida galattica per gli autostoppisti", 1),
-            new Book(2, "Ristorante al termine dell'Universo", 1),
+            new Book(1, "The Hitchhiker's Guide to the Galaxy", 1),
+            new Book(2, "Dirk Gently's Holistic Detective Agency", 1),
             new Book(3, "IT", 2),
-            new Book(4, "La metamorfosi", 3)
+            new Book(4, "The Metamorphosis", 3)
     );
 
     public List<Book> findAll() {
@@ -32,5 +33,11 @@ public class BookRepository {
                 .filter(book -> book.getName().equalsIgnoreCase(bookName))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public List<Book> findByAuthorId(final int authorId) {
+        return books.stream()
+                .filter(book -> book.getAuthorId() == authorId)
+                .collect(Collectors.toList());
     }
 }

@@ -22,4 +22,8 @@ public class AuthorRepository {
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<Author> findAll() {
+        return authors;
+    }
 }

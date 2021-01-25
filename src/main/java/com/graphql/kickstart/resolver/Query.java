@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.graphql.kickstart.domain.Author;
 import com.graphql.kickstart.domain.Book;
+import com.graphql.kickstart.repository.AuthorRepository;
 import com.graphql.kickstart.repository.BookRepository;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
@@ -13,9 +15,11 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 public class Query implements GraphQLQueryResolver {
 
     private BookRepository bookRepository;
+    private AuthorRepository authorRepository;
 
-    public Query(BookRepository bookRepository) {
+    public Query(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     public List<Book> books() {
@@ -28,5 +32,9 @@ public class Query implements GraphQLQueryResolver {
 
     public Book bookByName(String bookName) {
         return bookRepository.findByName(bookName);
+    }
+
+    public List<Author> authors() {
+        return authorRepository.findAll();
     }
 }
