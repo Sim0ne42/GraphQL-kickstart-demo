@@ -23,9 +23,15 @@
 hs_err_pid*
 
 # IDEA files #
-.idea
+*idea*
+*libraries*
+*sonarlint*
 **/*.iml
 **/*.ipr
 **/*.iws
 **/bin/**
 **/.settings
+
+*md
+mvnw*
+*target*
