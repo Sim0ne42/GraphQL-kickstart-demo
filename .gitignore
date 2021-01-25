@@ -24,8 +24,6 @@ hs_err_pid*
 
 # IDEA files #
 *idea*
-*libraries*
-*sonarlint*
 **/*.iml
 **/*.ipr
 **/*.iws
@@ -34,4 +32,4 @@ hs_err_pid*
 
 *md
 mvnw*
-*target*
+target
