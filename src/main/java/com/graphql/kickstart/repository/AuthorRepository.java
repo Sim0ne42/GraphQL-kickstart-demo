@@ -9,7 +9,7 @@ import com.graphql.kickstart.domain.Author;
 @Component
 public class AuthorRepository {
 
-    private final List<Author> authors = List.of(
+    private List<Author> authors = List.of(
             new Author(1, "Douglas Adams"),
             new Author(2, "Stephen King"),
             new Author(3, "Franz Kafka"),

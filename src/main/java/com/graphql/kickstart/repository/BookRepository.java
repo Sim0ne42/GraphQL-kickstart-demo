@@ -10,7 +10,7 @@ import com.graphql.kickstart.domain.Book;
 @Component
 public class BookRepository {
 
-    private final List<Book> books = List.of(
+    private List<Book> books = List.of(
             new Book(1, "The Hitchhiker's Guide to the Galaxy", 1),
             new Book(2, "Dirk Gently's Holistic Detective Agency", 1),
             new Book(3, "IT", 2),
