@@ -21,21 +21,21 @@ public class BookRepository {
         return books;
     }
 
-    public Book findById(final int bookId) {
+    public Book findById(int bookId) {
         return books.stream()
                 .filter(book -> book.getId() == bookId)
                 .findFirst()
                 .orElse(null);
     }
 
-    public Book findByName(final String bookName) {
+    public Book findByName(String bookName) {
         return books.stream()
                 .filter(book -> book.getName().equalsIgnoreCase(bookName))
                 .findFirst()
                 .orElse(null);
     }
 
-    public List<Book> findByAuthorId(final int authorId) {
+    public List<Book> findByAuthorId(int authorId) {
         return books.stream()
                 .filter(book -> book.getAuthorId() == authorId)
                 .collect(Collectors.toList());

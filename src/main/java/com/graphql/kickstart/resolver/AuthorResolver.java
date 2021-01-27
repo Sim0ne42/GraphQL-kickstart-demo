@@ -15,7 +15,7 @@ public class AuthorResolver implements GraphQLResolver<Author> {
 
     private BookRepository bookRepository;
 
-    public AuthorResolver(final BookRepository bookRepository) {
+    public AuthorResolver(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 

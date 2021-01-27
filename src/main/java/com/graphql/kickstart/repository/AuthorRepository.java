@@ -16,7 +16,7 @@ public class AuthorRepository {
             new Author(4, "Edgar Allan Poe")
     );
 
-    public Author findById(final int authorId) {
+    public Author findById(int authorId) {
         return authors.stream()
                 .filter(author -> author.getId() == authorId)
                 .findFirst()
