@@ -1,6 +1,6 @@
 package com.graphql.kickstart.factory;
 
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -47,12 +47,9 @@ public class DataLoaderRegistryFactory {
 
     private DataLoader<Integer, List<Book>> createBookDataLoader() {
         return DataLoader.newMappedDataLoader(ids -> CompletableFuture.supplyAsync(() -> {
-                    Map<Integer, List<Book>> result = ids.stream()
-                            .map(bookRepository::findByAuthorId)
-                            .flatMap(Collection::stream)
-                            .collect(Collectors.groupingBy(Book::getAuthorId));
-                    ids.forEach(id -> result.computeIfAbsent(id, i -> List.of()));
-                    return result;
+                    Map<Integer, List<Book>> authorIdToBooksMap = new HashMap<>();
+                    ids.forEach(id -> authorIdToBooksMap.put(id, bookRepository.findByAuthorId(id)));
+                    return authorIdToBooksMap;
                 })
         );
     }
